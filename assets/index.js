@@ -1,12 +1,31 @@
-var ultimaEquacao; // variavel para manter a ultima equação
-var num1; // variavel para manter o primeiro numero
+var tela = document.getElementById("disp");
+
+var firstsub = true;
+var firstsoma = true;
+var firstmult = true;
+var firstdivi = true;
+
 var doted = false; // variavel para o ponto
 var firstnumber = true; // variavel para zerar a tela
-var equalactive = false;
+
+var ultimaEquacao; // variavel para manter a ultima equação
+var num1, num2; // variavel para manter os dois numeros
+
+
+
 
 function ac() { // função de zerar a tela
     document.getElementById("disp").innerHTML = 0;
     firstnumber = true;
+}
+
+function reset() { // Função para resetar toda a memória da calculadora
+    ultimaEquacao = ""; 
+    num1 = 0;
+    doted = false; 
+    firstnumber = true; 
+    firstcalc = true;
+    document.getElementById("disp").innerHTML = 0;
 }
 
 function attDisplay(num) { // funçao de atualização do display a cada tecla
@@ -25,45 +44,44 @@ function attDisplay(num) { // funçao de atualização do display a cada tecla
 }
 
 function equacao(equa) { //função de equação para pegar o primeiro numero e preparar para o próximo numero
-    var equaString = equa.toString();
-    if (equalactive == false) {
-        num1 = Number.parseFloat(document.getElementById("disp").innerHTML); // salva o primeiro numero
-        firstnumber = true;
-        ultimaEquacao = equaString; // salva a equação selecionado
-        equalactive = true;
-    }else if (equalactive == true) {
-        resultado()
-        num1 = Number.parseFloat(document.getElementById("disp").innerHTML); // salva o primeiro numero
-        firstnumber = true;
-        ultimaEquacao = equaString; // salva a equação selecionado
-    }
+    num1 = Number.parseFloat(document.getElementById("disp").innerHTML);
+    ultimaEquacao = equa.toString();
+    firstnumber = true;
+    document.getElementById("log").innerHTML = (equa + num1);
 }
 
 function resultado() {
-    var num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
     switch (ultimaEquacao) {
         case "soma":
-        document.getElementById("disp").innerHTML = num1 + num2;
+                num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                result = num1 + num2;
+                document.getElementById("disp").innerHTML = result;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
         break;
         case "subt":
-        document.getElementById("disp").innerHTML = num1 - num2;
+                num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                result = num1 - num2;
+                document.getElementById("disp").innerHTML = result;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
         break;
         case "mult":
-        document.getElementById("disp").innerHTML = num1 * num2;
+                num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                result = num1 * num2;
+                document.getElementById("disp").innerHTML = result;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
         break;
         case "divi":
-        document.getElementById("disp").innerHTML = num1 / num2;
+                num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                result = num1 / num2;
+                document.getElementById("disp").innerHTML = result;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
         break;
     }
-    num1 = Number.parseFloat(document.getElementById("disp").innerHTML);
-    firstnumber = true;
+    //document.getElementById("log").innerHTML = ("resultado");
+
+
+    
+    
 }
 
-function reset() {
-    ultimaEquacao = ""; 
-    num1 = 0;
-    doted = false; 
-    firstnumber = true; 
-    equalactive = false;
-    document.getElementById("disp").innerHTML = 0;
-}
+
