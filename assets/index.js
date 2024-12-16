@@ -9,7 +9,7 @@ var doted = false; // variavel para o ponto
 var firstnumber = true; // variavel para zerar a tela
 
 var ultimaEquacao; // variavel para manter a ultima equação
-var num1, num2; // variavel para manter os dois numeros
+var num1, num2, numaux; // variavel para manter os numeros
 
 
 
@@ -55,27 +55,66 @@ function resultado() {
         case "soma":
                 num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
                 result = num1 + num2;
+                firstsub = true;
+                firstmult = true;
+                firstdivi = true;
                 document.getElementById("disp").innerHTML = result;
                 document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
         break;
         case "subt":
+            if (firstsub == true) {
                 num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
                 result = num1 - num2;
                 document.getElementById("disp").innerHTML = result;
+                firstsub = false;
                 document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
+            }else if (firstsub == false ) {
+                num1 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                result = num1 - num2;
+                document.getElementById("disp").innerHTML = result;
+                firstsub = false;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
+            }
+            firstmult = true;
+            firstdivi = true;
         break;
         case "mult":
+            if (firstmult == true) {
+                num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                result = num1 * num2;
+                num1 = num2;
+                document.getElementById("disp").innerHTML = result;
+                firstmult = false;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
+            }else if (firstmult == false ) {
                 num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
                 result = num1 * num2;
                 document.getElementById("disp").innerHTML = result;
+                firstmult = false;
                 document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
+            }
+            firstsub = true;
+            firstdivi = true;
         break;
         case "divi":
+            if (firstdivi == true) {
                 num2 = Number.parseFloat(document.getElementById("disp").innerHTML);
                 result = num1 / num2;
+                numaux = num2;
                 document.getElementById("disp").innerHTML = result;
+                firstdivi = false;
+                document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result + " " + numaux);
+            }else if (firstdivi == false ) {
+                num1 = Number.parseFloat(document.getElementById("disp").innerHTML);
+                num2 = numaux;
+                result = num1 / num2;
+                document.getElementById("disp").innerHTML = result;
+                firstdivi = false;
                 document.getElementById("log").innerHTML = (num1 + " " + num2 + " " + result);
-        break;
+            }
+                firstsub = true;
+                firstmult = true;
+            break;
     }
     //document.getElementById("log").innerHTML = ("resultado");
 
