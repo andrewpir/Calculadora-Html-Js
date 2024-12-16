@@ -20,5 +20,6 @@ Para executar o projeto, siga os seguintes passos:
 1. Clone o repositório do GitHub:
 2. Abra index.html.
 
+
 Obs:
     Sei que é um projeto simples, porém, pretendo usar esse projeto para praticar programação, e pretendo desenvolver outros projetos maiores.
